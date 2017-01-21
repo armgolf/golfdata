@@ -1,0 +1,18 @@
+<!doctype html>
+{% load staticfiles %}
+
+<html>
+  <head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/golfapp.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Play" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Golf data</title>
+    <meta name="description" content="">
+  </head>
+  <body style="text-align:center;">
+    {% block content %}
+    {% endblock content %}
+  </body>
+</html>

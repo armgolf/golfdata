@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% load calcs %}
+
+{% block content %}
+  <div class="pageheader">
+    <h1 class="sitetitle">GolfData - Detailed Round Data</h1>
+  </div>
+  <p><a href="{% url 'display' %}">Homepage</a></p>
+  <p><a href="{% url 'golfscore_edit' pk=golfscores.pk %}">Edit Golfscore</a></p>
+  <h1 class="posttitle">{{ golfscores.course }}</h1>
+  <table class="Yeee">
+    <tr>
+      <th>Hole</th>
+      <th>Par</th>
+      <th>Score</th>
+      <th>Drive</th>
+      <th>Longiron</th>
+      <th>Approach</th>
+      <th>Chip</th>
+      <th>Putt</th>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno1 }}</td>
+      <td>{{ golfscores.par1 }}</td>
+      <td>{{ golfscores.score1 }}</td>
+      <td>{{ golfscores.drive1 }}</td>
+      <td>{{ golfscores.longiron1 }}</td>
+      <td>{{ golfscores.approach1 }}</td>
+      <td>{{ golfscores.chip1 }}</td>
+      <td>{{ golfscores.putt1 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno2 }}</td>
+      <td>{{ golfscores.par2 }}</td>
+      <td>{{ golfscores.score2 }}</td>
+      <td>{{ golfscores.drive2 }}</td>
+      <td>{{ golfscores.longiron2 }}</td>
+      <td>{{ golfscores.approach2 }}</td>
+      <td>{{ golfscores.chip2 }}</td>
+      <td>{{ golfscores.putt2 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno3 }}</td>
+      <td>{{ golfscores.par3 }}</td>
+      <td>{{ golfscores.score3 }}</td>
+      <td>{{ golfscores.drive3 }}</td>
+      <td>{{ golfscores.longiron3 }}</td>
+      <td>{{ golfscores.approach3 }}</td>
+      <td>{{ golfscores.chip3 }}</td>
+      <td>{{ golfscores.putt3 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno4 }}</td>
+      <td>{{ golfscores.par4 }}</td>
+      <td>{{ golfscores.score4 }}</td>
+      <td>{{ golfscores.drive4 }}</td>
+      <td>{{ golfscores.longiron4 }}</td>
+      <td>{{ golfscores.approach4 }}</td>
+      <td>{{ golfscores.chip4 }}</td>
+      <td>{{ golfscores.putt4 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno5 }}</td>
+      <td>{{ golfscores.par5 }}</td>
+      <td>{{ golfscores.score5 }}</td>
+      <td>{{ golfscores.drive5 }}</td>
+      <td>{{ golfscores.longiron5 }}</td>
+      <td>{{ golfscores.approach5 }}</td>
+      <td>{{ golfscores.chip5 }}</td>
+      <td>{{ golfscores.putt5 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno6 }}</td>
+      <td>{{ golfscores.par6 }}</td>
+      <td>{{ golfscores.score6 }}</td>
+      <td>{{ golfscores.drive6 }}</td>
+      <td>{{ golfscores.longiron6 }}</td>
+      <td>{{ golfscores.approach6 }}</td>
+      <td>{{ golfscores.chip6 }}</td>
+      <td>{{ golfscores.putt6 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno7 }}</td>
+      <td>{{ golfscores.par7 }}</td>
+      <td>{{ golfscores.score7 }}</td>
+      <td>{{ golfscores.drive7 }}</td>
+      <td>{{ golfscores.longiron7 }}</td>
+      <td>{{ golfscores.approach7 }}</td>
+      <td>{{ golfscores.chip7 }}</td>
+      <td>{{ golfscores.putt7 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno8 }}</td>
+      <td>{{ golfscores.par8 }}</td>
+      <td>{{ golfscores.score8 }}</td>
+      <td>{{ golfscores.drive8 }}</td>
+      <td>{{ golfscores.longiron8 }}</td>
+      <td>{{ golfscores.approach8 }}</td>
+      <td>{{ golfscores.chip8 }}</td>
+      <td>{{ golfscores.putt8 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno9 }}</td>
+      <td>{{ golfscores.par9 }}</td>
+      <td>{{ golfscores.score9 }}</td>
+      <td>{{ golfscores.drive9 }}</td>
+      <td>{{ golfscores.longiron9 }}</td>
+      <td>{{ golfscores.approach9 }}</td>
+      <td>{{ golfscores.chip9 }}</td>
+      <td>{{ golfscores.putt9 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno10 }}</td>
+      <td>{{ golfscores.par10 }}</td>
+      <td>{{ golfscores.score10 }}</td>
+      <td>{{ golfscores.drive10 }}</td>
+      <td>{{ golfscores.longiron10 }}</td>
+      <td>{{ golfscores.approach10 }}</td>
+      <td>{{ golfscores.chip10 }}</td>
+      <td>{{ golfscores.putt10 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno11 }}</td>
+      <td>{{ golfscores.par11 }}</td>
+      <td>{{ golfscores.score11 }}</td>
+      <td>{{ golfscores.drive11 }}</td>
+      <td>{{ golfscores.longiron11 }}</td>
+      <td>{{ golfscores.approach11 }}</td>
+      <td>{{ golfscores.chip11 }}</td>
+      <td>{{ golfscores.putt11 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno12 }}</td>
+      <td>{{ golfscores.par12 }}</td>
+      <td>{{ golfscores.score12 }}</td>
+      <td>{{ golfscores.drive12 }}</td>
+      <td>{{ golfscores.longiron12 }}</td>
+      <td>{{ golfscores.approach12 }}</td>
+      <td>{{ golfscores.chip12 }}</td>
+      <td>{{ golfscores.putt12 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno13 }}</td>
+      <td>{{ golfscores.par13 }}</td>
+      <td>{{ golfscores.score13 }}</td>
+      <td>{{ golfscores.drive13 }}</td>
+      <td>{{ golfscores.longiron13 }}</td>
+      <td>{{ golfscores.approach13 }}</td>
+      <td>{{ golfscores.chip13 }}</td>
+      <td>{{ golfscores.putt13 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno14 }}</td>
+      <td>{{ golfscores.par14 }}</td>
+      <td>{{ golfscores.score14 }}</td>
+      <td>{{ golfscores.drive14 }}</td>
+      <td>{{ golfscores.longiron14 }}</td>
+      <td>{{ golfscores.approach14 }}</td>
+      <td>{{ golfscores.chip14 }}</td>
+      <td>{{ golfscores.putt14 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno15 }}</td>
+      <td>{{ golfscores.par15 }}</td>
+      <td>{{ golfscores.score15 }}</td>
+      <td>{{ golfscores.drive15 }}</td>
+      <td>{{ golfscores.longiron15 }}</td>
+      <td>{{ golfscores.approach15 }}</td>
+      <td>{{ golfscores.chip15 }}</td>
+      <td>{{ golfscores.putt15 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno16 }}</td>
+      <td>{{ golfscores.par16 }}</td>
+      <td>{{ golfscores.score16 }}</td>
+      <td>{{ golfscores.drive16 }}</td>
+      <td>{{ golfscores.longiron16 }}</td>
+      <td>{{ golfscores.approach16 }}</td>
+      <td>{{ golfscores.chip16 }}</td>
+      <td>{{ golfscores.putt16 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno17 }}</td>
+      <td>{{ golfscores.par17 }}</td>
+      <td>{{ golfscores.score17 }}</td>
+      <td>{{ golfscores.drive17 }}</td>
+      <td>{{ golfscores.longiron17 }}</td>
+      <td>{{ golfscores.approach17 }}</td>
+      <td>{{ golfscores.chip17 }}</td>
+      <td>{{ golfscores.putt17 }}</td>
+    </tr>
+    <tr>
+      <td>{{ golfscores.holeno18 }}</td>
+      <td>{{ golfscores.par18 }}</td>
+      <td>{{ golfscores.score18 }}</td>
+      <td>{{ golfscores.drive18 }}</td>
+      <td>{{ golfscores.longiron18 }}</td>
+      <td>{{ golfscores.approach18 }}</td>
+      <td>{{ golfscores.chip18 }}</td>
+      <td>{{ golfscores.putt18 }}</td>
+    </tr>
+  </table>
+  {% partotals golfscores.par1 golfscores.par2 golfscores.par3 golfscores.par4 golfscores.par5 golfscores.par6 golfscores.par7 golfscores.par8 golfscores.par9 golfscores.par10 golfscores.par11 golfscores.par12 golfscores.par13 golfscores.par14 golfscores.par15 golfscores.par16 golfscores.par17 golfscores.par18 golfscores.score1 golfscores.score2 golfscores.score3 golfscores.score4 golfscores.score5 golfscores.score6 golfscores.score7 golfscores.score8 golfscores.score9 golfscores.score10 golfscores.score11 golfscores.score12 golfscores.score13 golfscores.score14 golfscores.score15 golfscores.score16 golfscores.score17 golfscores.score18 as partotalscores %}
+  <p> {{ partotalscores.6}} over par!!</p>
+  <table class="Yeee">
+    <thead>
+      <tr>
+        <th>Scorecard</th>
+        <th>Par </th>
+        <th>Player Score</th>
+      </tr>
+      <tr>
+        <td>Front 9 </td>
+        <td>{{ partotalscores.0 }}</td>
+        <td>{{ partotalscores.3 }}</td>
+      </tr>
+      <tr>
+        <td>Back 9 </td>
+        <td>{{ partotalscores.1 }}</td>
+        <td>{{ partotalscores.4 }}</td>
+      </tr>
+      <tr>
+        <td>Total </td>
+        <td>{{ partotalscores.2 }}</td>
+        <td>{{ partotalscores.5 }}</td>
+      </tr>
+    </thead>
+  </table>
+</p>
+<table class="Yeee">
+  <tr>
+    <th>Drive </th>
+    <th>Longiron </th>
+    <th>Approach </th>
+    <th>Chip </th>
+    <th>Putt </th>
+  </tr>
+  <tr>
+    <td>{% drive golfscores.drive1 golfscores.drive2 golfscores.drive3 golfscores.drive4 golfscores.drive5 golfscores.drive6 golfscores.drive7 golfscores.drive8 golfscores.drive9 golfscores.drive10 golfscores.drive11 golfscores.drive12 golfscores.drive13 golfscores.drive14 golfscores.drive15 golfscores.drive16 golfscores.drive17 golfscores.drive18 %}% </td>
+    <td>{% longiron golfscores.longiron1 golfscores.longiron2 golfscores.longiron3 golfscores.longiron4 golfscores.longiron5 golfscores.longiron6 golfscores.longiron7 golfscores.longiron8 golfscores.longiron9 golfscores.longiron10 golfscores.longiron11 golfscores.longiron12 golfscores.longiron13 golfscores.longiron14 golfscores.longiron15 golfscores.longiron16 golfscores.longiron17 golfscores.longiron18 %}%</td>
+    <td>{% approach golfscores.approach1 golfscores.approach2 golfscores.approach3 golfscores.approach4 golfscores.approach5 golfscores.approach6 golfscores.approach7 golfscores.approach8 golfscores.approach9 golfscores.approach10 golfscores.approach11 golfscores.approach12 golfscores.approach13 golfscores.approach14 golfscores.approach15 golfscores.approach16 golfscores.approach17 golfscores.approach18 %}%</td>
+    <td>{% chip golfscores.chip1 golfscores.chip2 golfscores.chip3 golfscores.chip4 golfscores.chip5 golfscores.chip6 golfscores.chip7 golfscores.chip8 golfscores.chip9 golfscores.chip10 golfscores.chip11 golfscores.chip12 golfscores.chip13 golfscores.chip14 golfscores.chip15 golfscores.chip16 golfscores.chip17 golfscores.chip18 %}%</td>
+    <td>{% putt golfscores.putt1 golfscores.putt2 golfscores.putt3 golfscores.putt4 golfscores.putt5 golfscores.putt6 golfscores.putt7 golfscores.putt8 golfscores.putt9 golfscores.putt10 golfscores.putt11 golfscores.putt12 golfscores.putt13 golfscores.putt14 golfscores.putt15 golfscores.putt16 golfscores.putt17 golfscores.putt18 %}%</td>
+  </tr>
+</table>
+{% endblock %}
