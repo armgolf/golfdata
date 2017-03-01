@@ -21,7 +21,6 @@
 
   <div class="displaylist">
       {% for golfscores in golfscores %}
-        {% if golfscores.author == user %}
           <h1><a class="posttitle", href="{% url 'golfscore_detail' pk=golfscores.pk %}">{{ golfscores.course }}</a></h1>
           {% partotals golfscores.par1 golfscores.par2 golfscores.par3 golfscores.par4 golfscores.par5 golfscores.par6 golfscores.par7 golfscores.par8 golfscores.par9 golfscores.par10 golfscores.par11 golfscores.par12 golfscores.par13 golfscores.par14 golfscores.par15 golfscores.par16 golfscores.par17 golfscores.par18 golfscores.score1 golfscores.score2 golfscores.score3 golfscores.score4 golfscores.score5 golfscores.score6 golfscores.score7 golfscores.score8 golfscores.score9 golfscores.score10 golfscores.score11 golfscores.score12 golfscores.score13 golfscores.score14 golfscores.score15 golfscores.score16 golfscores.score17 golfscores.score18 as partotalscores %}
           <p class="para">{{ partotalscores.6}} over par!!</p>
@@ -67,8 +66,8 @@
           </tr>
         </table>
         <div class="col-xs-12" style="height:5px;"></div>
+        <p class="para">Posted by: {{ golfscores.author }}</p>
         <p class="para">{{ golfscores.published_date }}</p>
-      {% endif %}
     {% endfor %}
   </div>
 
