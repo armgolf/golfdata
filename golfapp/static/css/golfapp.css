@@ -1,29 +1,52 @@
-.sitetitle {
-  color: white;
-  font-family: 'Lobster', cursive;
-}
-
 .pageheader {
-  background-color: black;
+  background-color: Black;
   margin-top: 0px;
   padding: 20px 20px 20px 40px;
 
 }
 
-.posttitle {
-  color: green;
+.sitetitle {
+  color: white;
   font-family: 'Lobster', cursive;
 }
 
-.newround {
-  color: red;
+.charttitle {
+  color: black;
+  font-family: 'Lobster', cursive;
 }
 
-.Yeee, .Yeee th, .Yeee td {
+.subtitle {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+.hellouser {
+  color: orange;
+  font-family: 'Raleway', sans-serif;
+}
+
+.displaylist {
+  text-align: center;
+  margin: auto;
+}
+
+.posttitle {
+  color: green;
+  font-family: 'Lobster', cursive;
+  text-align: center;
+}
+
+
+.table1, .table1 th, .table1 td {
   margin-left: auto;
   margin-right: auto;
   border: 1px solid black;
   padding: 0.5rem;
+  text-align: center;
+}
+
+.linkpadding {
+  padding: 20px 20px 20px 20px;
 }
 
 .Rounddata, .Rounddata th, .Rounddata td {
@@ -37,10 +60,18 @@
 
 p, a {
   margin-left: 0px;
+  color: white;
+  text-align: center;
 }
 
-button {
-  margin: 20px 20px 20px 20px;
+.para {
+  color: black;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+.btn a:hover, .btn a:focus {
+    color: red;
 }
 
 .classybox {
@@ -48,11 +79,6 @@ button {
   text-align: center;
 }
 
-.displaylist {
-  text-align: center;
-  margin: auto;
-}
-
-.homepage {
-  padding: 20px 20px 20px 20px;
+.spacer {
+    height: 20px;
 }

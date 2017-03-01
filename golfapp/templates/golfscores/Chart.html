@@ -1,0 +1,64 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+  <head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Play" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Golf data</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'css/golfapp.css' %}">
+    <!-- Load in jQuery and HighCharts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+    <script src="/highcharts.js" type="text/javascript"></script>
+  </head>
+
+
+<p>Current User: {{ current_user }}</p>
+
+{% block heading %}
+  <p class="para" align="center"><a class="para" href="{% url 'drivingtips' %}">Driving Tips</a>｜
+  <a class="para" href="{% url 'longirontips' %}">Longiron Shot Tips</a>｜
+  <a class="para" href="{% url 'approachtips' %}">Approach Shot Tips</a>｜
+  <a class="para" href="{% url 'chippingtips' %}">Chipping Tips</a>｜
+  <a class="para" href="{% url 'puttingtips' %}">Putting Tips</a></p>
+
+    <p class="para" align="center"><a class="para" href="{% url 'display' %}">Back to Dashboard</a></p>
+    <h1 class="charttitle" align="center">Golfdata - Analysis</h1>
+{% endblock %}
+
+{% block content %}
+    <div id={{ chartID|safe }} class="chart" style="height:100px; width:100%"></div>
+
+<div>dkhlkjh </div>
+{% endblock %}
+
+{% block extrajs %}
+<!-- Maps the Python template context variables from views.py to the Highchart js variables -->
+<script>
+    var chart_id = {{ chartID|safe }}
+    var chart = {{ chart|safe }}
+    var title = {{ title|safe }}
+    var xAxis = {{ xAxis|safe }}
+    var yAxis = {{ yAxis|safe }}
+    var series = {{ series|safe }}
+</script>
+
+<!-- Highchart js. Variable map shown above -->
+<script>
+$(document).ready(function() {
+    $(chart_id).highcharts({
+        chart: chart,
+        title: title,
+        xAxis: xAxis,
+        yAxis: yAxis,
+        series: series
+    });
+});
+</script>
+{% endblock %}
+
+</html>

@@ -4,11 +4,17 @@
 {% block content %}
   <div class="pageheader">
     <h1 class="sitetitle">GolfData - Detailed Round Data</h1>
+    {% if user.is_authenticated %}
+      <p class="hellouser">Hello {{ user.username }} <small>(<a class="text-muted" href="{% url 'logout' %}">Log out</a>)</small></p>
+      <p><a href ="{% url 'display' %}" class="hellouser">Dashboard </a>｜
+      <a href="{% url 'golfscore_edit' pk=golfscores.pk %}" class="hellouser">Edit this Golf Round <span class="glyphicon glyphicon-pencil"></span></a></p>
+    {% else %}
+      <a href="{% url 'login' %}" class="hellouser">Login <span class="glyphicon glyphicon-lock"></span></a>
+      <a href="{% url 'register' %}" class="hellouser">Register <span class="glyphicon glyphicon-plus"></span></a>
+    {% endif %}
   </div>
-  <p><a href="{% url 'display' %}">Homepage</a></p>
-  <p><a href="{% url 'golfscore_edit' pk=golfscores.pk %}">Edit Golfscore</a></p>
   <h1 class="posttitle">{{ golfscores.course }}</h1>
-  <table class="Yeee">
+  <table class="table1">
     <tr>
       <th>Hole</th>
       <th>Par</th>
@@ -202,7 +208,7 @@
   </table>
   {% partotals golfscores.par1 golfscores.par2 golfscores.par3 golfscores.par4 golfscores.par5 golfscores.par6 golfscores.par7 golfscores.par8 golfscores.par9 golfscores.par10 golfscores.par11 golfscores.par12 golfscores.par13 golfscores.par14 golfscores.par15 golfscores.par16 golfscores.par17 golfscores.par18 golfscores.score1 golfscores.score2 golfscores.score3 golfscores.score4 golfscores.score5 golfscores.score6 golfscores.score7 golfscores.score8 golfscores.score9 golfscores.score10 golfscores.score11 golfscores.score12 golfscores.score13 golfscores.score14 golfscores.score15 golfscores.score16 golfscores.score17 golfscores.score18 as partotalscores %}
   <p> {{ partotalscores.6}} over par!!</p>
-  <table class="Yeee">
+  <table class="table1">
     <thead>
       <tr>
         <th>Scorecard</th>
@@ -227,7 +233,7 @@
     </thead>
   </table>
 </p>
-<table class="Yeee">
+<table class="table1">
   <tr>
     <th>Drive </th>
     <th>Longiron </th>

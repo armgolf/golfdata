@@ -24,6 +24,7 @@ class PostForm(forms.ModelForm):
          'holeno16', 'par16', 'score16','drive16', 'longiron16', 'approach16', 'chip16', 'putt16',
          'holeno17', 'par17', 'score17','drive17', 'longiron17', 'approach17', 'chip17', 'putt17',
          'holeno18', 'par18', 'score18','drive18', 'longiron18', 'approach18', 'chip18', 'putt18',
+         'author',
          )
         widgets = {
             'holeno1': NumberInput(attrs={'class': 'classybox'}),

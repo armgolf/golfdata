@@ -3,9 +3,16 @@
 {% block content %}
     <div class="pageheader">
       <h1 class="sitetitle">GolfData - New Round Data</h1>
+      {% if user.is_authenticated %}
+        <p class="hellouser">Hello {{ user.username }} <small>(<a class="text-muted" href="{% url 'logout' %}">Log out</a>)</small></p>
+        <p><a href ="{% url 'display' %}" class="hellouser">Dashboard </a></p>
+
+      {% else %}
+        <a href="{% url 'login' %}" class="hellouser">Login <span class="glyphicon glyphicon-lock"></span></a>
+        <a href="{% url 'register' %}" class="hellouser">Register <span class="glyphicon glyphicon-plus"></span></a>
+      {% endif %}
     </div>
-    <div class="homepage">
-      <a href="{% url 'display' %}">Homepage</a>
+    <div class="linkpadding">
     </div>
     <form method="POST" autocomplete="off">{% csrf_token %}
         <p>Golf Course:
@@ -205,6 +212,7 @@
             <td>{{ form.putt18 }}</td>
           </tr>
         </table>
+        {{ form.author }}
       <button type="submit" class="btn btn-warning">Save</button>
     </form>
 {% endblock %}

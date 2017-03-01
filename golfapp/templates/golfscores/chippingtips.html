@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="pageheader">
+    <h1 class="sitetitle">GolfData - Chipping Tips</h1>
+    {% if user.is_authenticated %}
+      <p class="newround">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+      <p><a href ="{% url 'display' %}" class="hellouser">Dashboard </a>｜
+      <a href ="{% url 'plot' %}" class="hellouser">Back to - Average Shot Performance Chart</a></p>
+    {% else %}
+      <a href="{% url 'login' %}" class="newround">Login <span class="glyphicon glyphicon-lock"></span></a>
+      <a href="{% url 'register' %}" class="newround">Register <span class="glyphicon glyphicon-plus"></span></a>
+    {% endif %}
+  </div>
+
+
+  {% endblock %}

@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Golfscore
+from .models import ShotPercentages
 
-class GolfscoreAdmin(admin.ModelAdmin):
-    list_display = ['course', 'par1']
+class ShotPercentagesAdmin(admin.ModelAdmin):
+    pass
 
-admin.site.register(Golfscore, GolfscoreAdmin)
+admin.site.register(ShotPercentages, ShotPercentagesAdmin)
