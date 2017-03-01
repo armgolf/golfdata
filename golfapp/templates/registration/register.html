@@ -7,12 +7,20 @@
 
     <div class="pageheader">
       <h1 class="sitetitle">GolfData - Registration</h1>
-      <p><a href="{% url 'display' %}">Homepage</a></p>
+      <p><a href="{% url 'homepage' %}">Homepage</a></p>
     </div>
+
+    <style>
+    body {
+        background-color: blue;
+    }
+    </style>
+
+    <p>Note: text in boxes is white - highlight text to see it (soon to be fixed).</p>
 
     <form method="post" action="{% url 'register' %}">
     {% csrf_token %}
-      {{ form.as_p }}
+      <p class="para">{{ form.as_p }}</p>
         <input type="submit" value="register" />
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
