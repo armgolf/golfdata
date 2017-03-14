@@ -12,15 +12,15 @@
 
     <style>
     body {
-        background-color: blue;
+        background-color: white;
     }
     </style>
 
-    <p>Note: text in boxes is white - highlight text to see it (soon to be fixed).</p>
+    <p></p>
 
     <form method="post" action="{% url 'register' %}">
     {% csrf_token %}
-      <p class="para">{{ form.as_p }}</p>
+      <table>{{ form.as_table }}</table>
         <input type="submit" value="register" />
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
