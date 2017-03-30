@@ -18,7 +18,9 @@
     <button type="button" class="btn btn-primary btn-lg btn-block"><a href="{% url 'plot2' %}">Scores Over Time</a></button>
     <button type="button" class="btn btn-primary btn-lg btn-block"><a href="{% url 'plot' %}">% Good Shot type</a></button>
   <div class="col-xs-12" style="height:15px;"></div>
-    <h1 class="subtitle">My Latest Scores:</h1>
+
+  <p class="posttitle">Handicap: {{ handicap }}</p>
+  <h1 class="subtitle">My Latest Scores:</h1>
 
   <div class="container">
     <div class="row">
