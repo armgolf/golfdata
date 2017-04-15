@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="pageheader">
+      <h1 class="sitetitle">GolfData - New Round Data</h1>
+      {% if user.is_authenticated %}
+        <p class="hellouser">Hello {{ user.username }} <small>(<a class="text-muted" href="{% url 'logout' %}">Log out</a>)</small></p>
+        <p><a href ="{% url 'display' %}" class="hellouser">Dashboard </a></p>
+
+      {% else %}
+        <a href="{% url 'login' %}" class="hellouser">Login <span class="glyphicon glyphicon-lock"></span></a>
+        <a href="{% url 'register' %}" class="hellouser">Register <span class="glyphicon glyphicon-plus"></span></a>
+      {% endif %}
+    </div>
+    <div class="linkpadding">
+    </div>
+
+    <p class="para"><strong>Tip:</strong> use <a class="para_link" href="http://www.swingbyswing.com/courses" target="_blank">Swing by Swing</a> or <a class="para_link" href="http://clubsg.skygolf.com/courses/coursesSearch.php" target="_blank">SkyGolf360</a> to view hole by hole course maps.</p>
+    <p class="para">(Go split screen with a course overview map and this data entry page).</p>
+    <form method="POST" action="{% url 'scoresave' %}" autocomplete="off">
+      {% csrf_token %}
+
+        {% for coursedata in coursedata %}
+          <p class="para">Golf Course: {{ coursedata.course }}</p>
+          <table class="Rounddata">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th align="center" colspan="3">Drive</th>
+                <th align="center" colspan="3">Longiron</th>
+                <th align="center" colspan="3">Approach</th>
+                <th align="center" colspan="3">Chip</th>
+                <th align="center" colspan="3">Putt</th>
+              </tr>
+              <tr>
+                <th>Hole</th>
+                <th>Par</th>
+                <th>Score</th>
+                <th>Good</th>
+                <th>bad</th>
+                <th>N/a</th>
+                <th>Good</th>
+                <th>bad</th>
+                <th>N/a</th>
+                <th>Good</th>
+                <th>bad</th>
+                <th>N/a</th>
+                <th>Good</th>
+                <th>bad</th>
+                <th>N/a</th>
+                <th>Good</th>
+                <th>bad</th>
+                <th>N/a</th>
+              </tr>
+            </thead>
+            <tr>
+              <td>1</td>
+              <td>{{ coursedata.par1 }}</td>
+              <td>{{ form.score1 }}</td>
+              <td align="center" colspan="3">{{ form.drive1 }}</td>
+              <td align="center" colspan="3">{{ form.longiron1 }}</td>
+              <td align="center" colspan="3">{{ form.approach1 }}</td>
+              <td align="center" colspan="3">{{ form.chip1 }}</td>
+              <td align="center" colspan="3">{{ form.putt1 }}</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>{{ coursedata.par2 }}</td>
+              <td>{{ form.score2 }}</td>
+              <td align="center" colspan="3">{{ form.drive2 }}</td>
+              <td align="center" colspan="3">{{ form.longiron2 }}</td>
+              <td align="center" colspan="3">{{ form.approach2 }}</td>
+              <td align="center" colspan="3">{{ form.chip2 }}</td>
+              <td align="center" colspan="3">{{ form.putt2 }}</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>{{ coursedata.par3 }}</td>
+              <td>{{ form.score3 }}</td>
+              <td align="center" colspan="3">{{ form.drive3 }}</td>
+              <td align="center" colspan="3">{{ form.longiron3 }}</td>
+              <td align="center" colspan="3">{{ form.approach3 }}</td>
+              <td align="center" colspan="3">{{ form.chip3 }}</td>
+              <td align="center" colspan="3">{{ form.putt3 }}</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>{{ coursedata.par4 }}</td>
+              <td>{{ form.score4 }}</td>
+              <td align="center" colspan="3">{{ form.drive4 }}</td>
+              <td align="center" colspan="3">{{ form.longiron4 }}</td>
+              <td align="center" colspan="3">{{ form.approach4 }}</td>
+              <td align="center" colspan="3">{{ form.chip4 }}</td>
+              <td align="center" colspan="3">{{ form.putt4 }}</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>{{ coursedata.par5 }}</td>
+              <td>{{ form.score5 }}</td>
+              <td align="center" colspan="3">{{ form.drive5 }}</td>
+              <td align="center" colspan="3">{{ form.longiron5 }}</td>
+              <td align="center" colspan="3">{{ form.approach5 }}</td>
+              <td align="center" colspan="3">{{ form.chip5 }}</td>
+              <td align="center" colspan="3">{{ form.putt5 }}</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>{{ coursedata.par6 }}</td>
+              <td>{{ form.score6 }}</td>
+              <td align="center" colspan="3">{{ form.drive6 }}</td>
+              <td align="center" colspan="3">{{ form.longiron6 }}</td>
+              <td align="center" colspan="3">{{ form.approach6 }}</td>
+              <td align="center" colspan="3">{{ form.chip6 }}</td>
+              <td align="center" colspan="3">{{ form.putt6 }}</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>{{ coursedata.par7 }}</td>
+              <td>{{ form.score7 }}</td>
+              <td align="center" colspan="3">{{ form.drive7 }}</td>
+              <td align="center" colspan="3">{{ form.longiron7 }}</td>
+              <td align="center" colspan="3">{{ form.approach7 }}</td>
+              <td align="center" colspan="3">{{ form.chip7 }}</td>
+              <td align="center" colspan="3">{{ form.putt7 }}</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>{{ coursedata.par8 }}</td>
+              <td>{{ form.score8 }}</td>
+              <td align="center" colspan="3">{{ form.drive8 }}</td>
+              <td align="center" colspan="3">{{ form.longiron8 }}</td>
+              <td align="center" colspan="3">{{ form.approach8 }}</td>
+              <td align="center" colspan="3">{{ form.chip8 }}</td>
+              <td align="center" colspan="3">{{ form.putt8 }}</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>{{ coursedata.par9 }}</td>
+              <td>{{ form.score9 }}</td>
+              <td align="center" colspan="3">{{ form.drive9 }}</td>
+              <td align="center" colspan="3">{{ form.longiron9 }}</td>
+              <td align="center" colspan="3">{{ form.approach9 }}</td>
+              <td align="center" colspan="3">{{ form.chip9 }}</td>
+              <td align="center" colspan="3">{{ form.putt9 }}</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>{{ coursedata.par10 }}</td>
+              <td>{{ form.score10 }}</td>
+              <td align="center" colspan="3">{{ form.drive10 }}</td>
+              <td align="center" colspan="3">{{ form.longiron10 }}</td>
+              <td align="center" colspan="3">{{ form.approach10 }}</td>
+              <td align="center" colspan="3">{{ form.chip10 }}</td>
+              <td align="center" colspan="3">{{ form.putt10 }}</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>{{ coursedata.par11 }}</td>
+              <td>{{ form.score11 }}</td>
+              <td align="center" colspan="3">{{ form.drive11 }}</td>
+              <td align="center" colspan="3">{{ form.longiron11 }}</td>
+              <td align="center" colspan="3">{{ form.approach11 }}</td>
+              <td align="center" colspan="3">{{ form.chip11 }}</td>
+              <td align="center" colspan="3">{{ form.putt11 }}</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>{{ coursedata.par12 }}</td>
+              <td>{{ form.score12 }}</td>
+              <td align="center" colspan="3">{{ form.drive12 }}</td>
+              <td align="center" colspan="3">{{ form.longiron12 }}</td>
+              <td align="center" colspan="3">{{ form.approach12 }}</td>
+              <td align="center" colspan="3">{{ form.chip12 }}</td>
+              <td align="center" colspan="3">{{ form.putt12 }}</td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>{{ coursedata.par13 }}</td>
+              <td>{{ form.score13 }}</td>
+              <td align="center" colspan="3">{{ form.drive13 }}</td>
+              <td align="center" colspan="3">{{ form.longiron13 }}</td>
+              <td align="center" colspan="3">{{ form.approach13 }}</td>
+              <td align="center" colspan="3">{{ form.chip13 }}</td>
+              <td align="center" colspan="3">{{ form.putt13 }}</td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>{{ coursedata.par14 }}</td>
+              <td>{{ form.score14 }}</td>
+              <td align="center" colspan="3">{{ form.drive14 }}</td>
+              <td align="center" colspan="3">{{ form.longiron14 }}</td>
+              <td align="center" colspan="3">{{ form.approach14 }}</td>
+              <td align="center" colspan="3">{{ form.chip14 }}</td>
+              <td align="center" colspan="3">{{ form.putt14 }}</td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>{{ coursedata.par15 }}</td>
+              <td>{{ form.score15 }}</td>
+              <td align="center" colspan="3">{{ form.drive15 }}</td>
+              <td align="center" colspan="3">{{ form.longiron15 }}</td>
+              <td align="center" colspan="3">{{ form.approach15 }}</td>
+              <td align="center" colspan="3">{{ form.chip15 }}</td>
+              <td align="center" colspan="3">{{ form.putt15 }}</td>
+            </tr>
+            <tr>
+              <td>16</td>
+              <td>{{ coursedata.par16 }}</td>
+              <td>{{ form.score16 }}</td>
+              <td align="center" colspan="3">{{ form.drive16 }}</td>
+              <td align="center" colspan="3">{{ form.longiron16 }}</td>
+              <td align="center" colspan="3">{{ form.approach16 }}</td>
+              <td align="center" colspan="3">{{ form.chip16 }}</td>
+              <td align="center" colspan="3">{{ form.putt16 }}</td>
+            </tr>
+            <tr>
+              <td>17</td>
+              <td>{{ coursedata.par17 }}</td>
+              <td>{{ form.score17 }}</td>
+              <td align="center" colspan="3">{{ form.drive17 }}</td>
+              <td align="center" colspan="3">{{ form.longiron17 }}</td>
+              <td align="center" colspan="3">{{ form.approach17 }}</td>
+              <td align="center" colspan="3">{{ form.chip17 }}</td>
+              <td align="center" colspan="3">{{ form.putt17 }}</td>
+            </tr>
+            <tr>
+              <td>18</td>
+              <td>{{ coursedata.par18 }}</td>
+              <td>{{ form.score18 }}</td>
+              <td align="center" colspan="3">{{ form.drive18 }}</td>
+              <td align="center" colspan="3">{{ form.longiron18 }}</td>
+              <td align="center" colspan="3">{{ form.approach18 }}</td>
+              <td align="center" colspan="3">{{ form.chip18 }}</td>
+              <td align="center" colspan="3">{{ form.putt18 }}</td>
+            </tr>
+          </table>
+          {% if field.errors %}
+            <span>{{ field.errors|striptags }}</span>
+          {% endif %}
+        {% endfor %}
+        
+      <button type="submit" class="btn btn-warning">Save</button>
+    </form>
+    <div class="linkpadding">
+    </div>
+    <div>
+      <p class="para">A "good" shot is one that achieves the intended outcome before hitting the shot and a "bad" shot is everything else.</p>
+      <p class="para">Example "good" shot definitions:</p>
+      <p class="para"><strong>Drive</strong> = Stops in the Fairway at normal diving distance.</p>
+      <p class="para"><strong>Longiron</strong> = A good strike which travels the expected distance in the intended direction.</p>
+      <p class="para"><strong>Approach</strong> = Stops on the green.</p>
+      <p class="para"><strong>Chip</strong> = Stops on the green within putting distance.</p>
+      <p class="para"><strong>Putt</strong> = No more than 2 putts per hole and 1 putt if the first putt is less than 2 meters from the hole.</p>
+    </div>
+{% endblock %}
