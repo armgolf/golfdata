@@ -1,3 +1,13 @@
+<div>
+  <p class="para">A "good" shot is one that achieves the intended outcome before hitting the shot and a "bad" shot is everything else.</p>
+  <p class="para">Example "good" shot definitions:</p>
+  <p class="para"><strong>Drive</strong> = Stops in the Fairway at normal diving distance.</p>
+  <p class="para"><strong>Longiron</strong> = A good strike which travels the expected distance in the intended direction.</p>
+  <p class="para"><strong>Approach</strong> = Stops on the green.</p>
+  <p class="para"><strong>Chip</strong> = Stops on the green within putting distance.</p>
+  <p class="para"><strong>Putt</strong> = No more than 2 putts per hole and 1 putt if the first putt is less than 2 meters from the hole.</p>
+</div>
+
 class ShotPercentages(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     drivepercentage = models.IntegerField(default=1)

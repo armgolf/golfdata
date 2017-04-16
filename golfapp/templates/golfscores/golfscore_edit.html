@@ -15,8 +15,9 @@
     <div class="linkpadding">
     </div>
 
-    <p class="para"><strong>Tip:</strong> use <a class="para_link" href="http://www.swingbyswing.com/courses" target="_blank">Swing by Swing</a> or <a class="para_link" href="http://clubsg.skygolf.com/courses/coursesSearch.php" target="_blank">SkyGolf360</a> to view hole by hole course maps.</p>
+    <p class="para"><strong>Instructions:</strong> use <a class="para_link" href="http://www.swingbyswing.com/courses" target="_blank">Swing by Swing</a> or <a class="para_link" href="http://clubsg.skygolf.com/courses/coursesSearch.php" target="_blank">SkyGolf360</a> to view hole by hole course maps.</p>
     <p class="para">(Go split screen with a course overview map and this data entry page).</p>
+    <p class="para">Then enter your score and Good/Bad/N/a for each shot type per hole.</p>
     <form method="POST" action="" autocomplete="off">
       {% csrf_token %}
 
@@ -245,13 +246,5 @@
     </form>
     <div class="linkpadding">
     </div>
-    <div>
-      <p class="para">A "good" shot is one that achieves the intended outcome before hitting the shot and a "bad" shot is everything else.</p>
-      <p class="para">Example "good" shot definitions:</p>
-      <p class="para"><strong>Drive</strong> = Stops in the Fairway at normal diving distance.</p>
-      <p class="para"><strong>Longiron</strong> = A good strike which travels the expected distance in the intended direction.</p>
-      <p class="para"><strong>Approach</strong> = Stops on the green.</p>
-      <p class="para"><strong>Chip</strong> = Stops on the green within putting distance.</p>
-      <p class="para"><strong>Putt</strong> = No more than 2 putts per hole and 1 putt if the first putt is less than 2 meters from the hole.</p>
-    </div>
+
 {% endblock %}
