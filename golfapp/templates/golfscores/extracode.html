@@ -6,6 +6,39 @@ class ShotPercentages(models.Model):
     chippercentage = models.IntegerField(default=1)
     puttpercentage = models.IntegerField(default=1)
 
+    opponent1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='opponent1', default=None, null=True, blank=True)
+    opponent2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='opponent2', default=None, null=True, blank=True)
+    opponent3 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='opponent3', default=None, null=True, blank=True)
+
+    """
+          if s.scoretotal < x.o1totalscore:
+              lt = Leaguetable.objects.filter(player=x.author)
+              lt = list(lt[:1])
+              lt = lt[0]
+              newwon = lt.won + 1
+              newpoints = lt.points + 2
+              t = Leaguetable(pk=lt.pk, won=newwon, lost=lt.lost, drawn=lt.drawn, points=newpoints, player=lt.player)
+              t.save()
+              return redirect('display')
+          elif s.scoretotal == x.o1totalscore:
+              lt = Leaguetable.objects.filter(player=x.author)
+              lt = list(lt[:1])
+              lt = lt[0]
+              newdrawn = lt.drawn + 1
+              newpoints = lt.points + 1
+              t = Leaguetable(pk=lt.pk, won=lt.won, lost=lt.lost, drawn=newdrawn, points=newpoints, player=lt.player)
+              t.save()
+              return redirect('display')
+          else:
+              lt = Leaguetable.objects.filter(player=x.author)
+              lt = list(lt[:1])
+              lt = lt[0]
+              newlost = lt.lost + 1
+              t = Leaguetable(pk=lt.pk, won=lt.won, lost=newlost, drawn=lt.drawn, points=lt.points, player=lt.player)
+              t.save()
+              return redirect('display')
+              """
+
 Golfscore detail
     <!--
       {% partotals golfscores.par1 golfscores.par2 golfscores.par3 golfscores.par4 golfscores.par5 golfscores.par6 golfscores.par7 golfscores.par8 golfscores.par9 golfscores.par10 golfscores.par11 golfscores.par12 golfscores.par13 golfscores.par14 golfscores.par15 golfscores.par16 golfscores.par17 golfscores.par18 golfscores.score1 golfscores.score2 golfscores.score3 golfscores.score4 golfscores.score5 golfscores.score6 golfscores.score7 golfscores.score8 golfscores.score9 golfscores.score10 golfscores.score11 golfscores.score12 golfscores.score13 golfscores.score14 golfscores.score15 golfscores.score16 golfscores.score17 golfscores.score18 as partotalscores %}

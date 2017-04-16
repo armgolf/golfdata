@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load calcs %}
+
+{% block content %}
+  <div class="pageheader">
+    <h1 class="sitetitle">GolfData - Leaguetable</h1>
+    {% if user.is_authenticated %}
+      <p class="hellouser">Hello {{ user.username }} <small>(<a class="text-muted" href="{% url 'logout' %}">Log out</a>)</small></p>
+      <p><a href ="{% url 'homepage' %}" class="hellouser">Homepage </a>｜
+      <a href="{% url 'golfscore_preentry' %}" class="hellouser">New Golf Round <span class="glyphicon glyphicon-plus"></span></a>｜
+      <a href ="{% url 'display' %}" class="hellouser">Dashboard <span class="glyphicon glyphicon-dashboard"></span></a></p>
+    {% else %}
+      <a href="{% url 'login' %}" class="hellouser">Login <span class="glyphicon glyphicon-lock"></span></a>
+      <a href="{% url 'register' %}" class="hellouser">Register <span class="glyphicon glyphicon-plus"></span></a>
+    {% endif %}
+  </div>
+
+<div class="col-xs-12" style="height:15px;"></div>
+  <table class="table1">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Played</th>
+        <th>Won </th>
+        <th>Lost </th>
+        <th>Drawn </th>
+        <th>Points </th>
+      </tr>
+    </thead>
+    {% for leaguetable in leaguetable %}
+      <tr>
+        <td>{{ leaguetable.player }}</td>
+        <td>{{ leaguetable.played }}</td>
+        <td>{{ leaguetable.won }}</td>
+        <td>{{ leaguetable.lost }}</td>
+        <td>{{ leaguetable.drawn }}</td>
+        <td>{{ leaguetable.points }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+<h1>Matches Played:</h1>
+<p class="para"><i>Marker, score｜Player1, score｜Player2, score｜Player3, score｜Date recorded</i></p>
+{% for totalscores, golfscore in combolist %}
+  {% if golfscore.o1totalscore != None %}
+    <p class="para">{{ golfscore.author }}, {{ totalscores.scoretotal }}｜{{ golfscore.opponent1 }}, {{ golfscore.o1totalscore }}｜{{ golfscore.opponent2 }}, {{ golfscore.o2totalscore }}｜{{ golfscore.opponent3 }}, {{ golfscore.o3totalscore }}｜{{ golfscore.published_date }}</p>
+  {% endif %}
+{% endfor %}
+
+
+{% endblock %}

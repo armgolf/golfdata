@@ -5,7 +5,7 @@
       <h1 class="sitetitle">GolfData - New Round Data</h1>
       {% if user.is_authenticated %}
         <p class="hellouser">Hello {{ user.username }} <small>(<a class="text-muted" href="{% url 'logout' %}">Log out</a>)</small></p>
-        <p><a href ="{% url 'display' %}" class="hellouser">Dashboard </a></p>
+        <p><a href ="{% url 'display' %}" class="hellouser">Dashboard <span class="glyphicon glyphicon-dashboard"></span></a></p>
 
       {% else %}
         <a href="{% url 'login' %}" class="hellouser">Login <span class="glyphicon glyphicon-lock"></span></a>

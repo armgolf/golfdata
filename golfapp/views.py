@@ -1,12 +1,25 @@
 from django.shortcuts import render
 from django.http import Http404, JsonResponse
-from golfapp.models import Golfscore, ShotPercentages, TotalScores, GolfCourses
+from golfapp.models import Golfscore, ShotPercentages, TotalScores, GolfCourses, Leaguetable
 from .forms import PostForm, gcselection
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from golfapp.templatetags.calcs import drive, longiron, approach, chip, putt
 from django.db.models import Avg
+
+@login_required
+def leaguetable(request):
+    leaguetable = Leaguetable.objects.all()
+    leaguetable = leaguetable.order_by('-points')
+    golfscore = Golfscore.objects.all()
+    golfscore = golfscore.order_by('-pk')
+    totalscores = TotalScores.objects.all()
+    totalscores = totalscores.order_by('-pk')
+    combolist = zip(totalscores, golfscore)
+    return render(request, 'golfscores/leaguetable.html', {
+        'leaguetable': leaguetable, 'golfscore': golfscore, 'totalscores': totalscores,'combolist': combolist,
+    })
 
 def homepage(request):
     golfscores = Golfscore.objects.all()
@@ -20,6 +33,7 @@ def homepage(request):
         'totalscores': totalscores, 'shotpercentages': shotpercentages, 'combolist': combolist, 'golfscores': golfscores
     })
 
+@login_required
 def display(request):
     user = User.objects.all()
     golfscores = Golfscore.objects.all()
@@ -45,9 +59,10 @@ def golfscore_preentry(request):
         if form.is_valid():
             golfcourse = GolfCourses.objects.get(course=(request.POST.get('field1')))
             golfscore = Golfscore(course=golfcourse, author=request.user)
-            totalscores = TotalScores(course=golfcourse)
-            shotpercentages = ShotPercentages(course=golfcourse)
             golfscore.save()
+            g = Golfscore.objects.latest('id')
+            totalscores = TotalScores(pk=g.pk)
+            shotpercentages = ShotPercentages(pk=g.pk)
             totalscores.save()
             shotpercentages.save()
             return redirect('scoresave')
@@ -123,7 +138,28 @@ def scoresave(request):
             s = TotalScores(author = x.author, courseoutwards = courseoutwards, courseinwards = courseinwards, coursepar = coursepar, scoreoutwards = scoreoutwards, scoreinwards = scoreinwards, scoretotal = scoretotal, overunderpar = overunderpar, course = x.course, pk=x.pk)
             r.save()
             s.save()
-            return redirect('display')
+            x = Golfscore.objects.latest('id')
+            s = TotalScores.objects.latest('id')
+            if x.o1totalscore != None:
+                myscore = s.scoretotal
+                array = [x.o1totalscore, x.o2totalscore, x.o3totalscore]
+                array = [item for item in array if item is not None]
+                wins = sum(item>myscore for item in array)
+                losses = sum(item<myscore for item in array)
+                draws = sum(item==myscore for item in array)
+                lt = Leaguetable.objects.filter(player=x.author)
+                lt = list(lt[:1])
+                lt = lt[0]
+                newwon = lt.won + wins
+                newdrawn = lt.drawn + draws
+                newlost = lt.lost + losses
+                newpoints = lt.points + ((wins*2)+draws)
+                newplayed = (newwon + newlost + newdrawn)
+                t = Leaguetable(pk=lt.pk, won=newwon, lost=newlost, drawn=newdrawn, points=newpoints, player=lt.player, played=newplayed)
+                t.save()
+                return redirect('display')
+            else:
+                return redirect('display')
     else:
         form = PostForm({
             'score1':golfcourse.par1,'score2':golfcourse.par2,'score3':golfcourse.par3,

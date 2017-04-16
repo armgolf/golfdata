@@ -145,6 +145,12 @@ class Golfscore(models.Model):
     putt18 = models.NullBooleanField(choices=CHOICES, default=None)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     published_date = models.DateTimeField(default=timezone.now)
+    opponent1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='opponent1', default=None, null=True, blank=True)
+    opponent2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='opponent2', default=None, null=True, blank=True)
+    opponent3 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='opponent3', default=None, null=True, blank=True)
+    o1totalscore = models.IntegerField(default=None, null=True, blank=True)
+    o2totalscore = models.IntegerField(default=None, null=True, blank=True)
+    o3totalscore = models.IntegerField(default=None, null=True, blank=True)
 
 class ShotPercentages(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
@@ -167,3 +173,11 @@ class TotalScores(models.Model):
     overunderpar = models.IntegerField(default=1)
     course = models.ForeignKey(GolfCourses, on_delete=models.CASCADE, null=True)
     published_date = models.DateTimeField(default=timezone.now)
+
+class Leaguetable(models.Model):
+    player = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    won = models.IntegerField(default=0)
+    lost = models.IntegerField(default=0)
+    drawn = models.IntegerField(default=0)
+    points = models.IntegerField(default=0)
+    played = models.IntegerField(default=0)

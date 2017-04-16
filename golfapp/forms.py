@@ -29,7 +29,7 @@ class PostForm(forms.ModelForm):
          'score16','drive16', 'longiron16', 'approach16', 'chip16', 'putt16',
          'score17','drive17', 'longiron17', 'approach17', 'chip17', 'putt17',
          'score18','drive18', 'longiron18', 'approach18', 'chip18', 'putt18',
-         
+         'opponent1', 'opponent2', 'opponent3', 'o1totalscore', 'o2totalscore', 'o3totalscore',
          )
         widgets = {
             'score1': NumberInput(attrs={'class': 'classybox'}),
@@ -50,6 +50,9 @@ class PostForm(forms.ModelForm):
             'score16': NumberInput(attrs={'class': 'classybox'}),
             'score17': NumberInput(attrs={'class': 'classybox'}),
             'score18': NumberInput(attrs={'class': 'classybox'}),
+            'o1totalscore': NumberInput(attrs={'class': 'classybox'}),
+            'o2totalscore': NumberInput(attrs={'class': 'classybox'}),
+            'o3totalscore': NumberInput(attrs={'class': 'classybox'}),
             'drive1': RadioSelect(renderer=HorizontalRadioRenderer),
             'longiron1': RadioSelect(renderer=HorizontalRadioRenderer),
             'approach1': RadioSelect(renderer=HorizontalRadioRenderer),
@@ -141,7 +144,6 @@ class PostForm(forms.ModelForm):
             'chip18': RadioSelect(renderer=HorizontalRadioRenderer),
             'putt18': RadioSelect(renderer=HorizontalRadioRenderer),
         }
-
 
 class gcselection(forms.Form):
     field1 = ModelChoiceField(queryset=GolfCourses.objects.all(), to_field_name="course", label='Which course did you play?', empty_label="select golf course")

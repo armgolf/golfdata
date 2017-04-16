@@ -7,7 +7,8 @@
     {% if user.is_authenticated %}
       <p class="hellouser">Hello {{ user.username }} <small>(<a class="text-muted" href="{% url 'logout' %}">Log out</a>)</small></p>
       <p><a href ="{% url 'homepage' %}" class="hellouser">Homepage </a>｜
-      <a href="{% url 'golfscore_preentry' %}" class="hellouser">New Golf Round <span class="glyphicon glyphicon-plus"></span></a></p>
+      <a href="{% url 'golfscore_preentry' %}" class="hellouser">New Golf Round <span class="glyphicon glyphicon-plus"></span></a>｜
+      <a href ="{% url 'leaguetable' %}" class="hellouser">Leaguetable <span class="glyphicon glyphicon-list"></span></a></p>
     {% else %}
       <a href="{% url 'login' %}" class="hellouser">Login <span class="glyphicon glyphicon-lock"></span></a>
       <a href="{% url 'register' %}" class="hellouser">Register <span class="glyphicon glyphicon-plus"></span></a>

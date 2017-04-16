@@ -5,7 +5,7 @@
       <h1 class="sitetitle">GolfData - New Round Data</h1>
       {% if user.is_authenticated %}
         <p class="hellouser">Hello {{ user.username }} <small>(<a class="text-muted" href="{% url 'logout' %}">Log out</a>)</small></p>
-        <p><a href ="{% url 'display' %}" class="hellouser">Dashboard </a></p>
+        <p><a href ="{% url 'display' %}" class="hellouser">Dashboard <span class="glyphicon glyphicon-dashboard"></span></a></p>
 
       {% else %}
         <a href="{% url 'login' %}" class="hellouser">Login <span class="glyphicon glyphicon-lock"></span></a>
@@ -236,11 +236,32 @@
               <td align="center" colspan="3">{{ form.putt18 }}</td>
             </tr>
           </table>
+          <p class="para">Did you play a league match? (if not, leave the below fields blank).</p>
+          <table>
+            <tr>
+              <td>Opponent 1:</td>
+              <td>{{ form.opponent1 }}</td>
+              <td>Opponent 1's total score for the round:</td>
+              <td>{{ form.o1totalscore }}</td>
+            </tr>
+            <tr>
+              <td>Opponent 2:</td>
+              <td>{{ form.opponent2 }}</td>
+              <td>Opponent 2's total score for the round:</td>
+              <td>{{ form.o2totalscore }}</td>
+            </tr>
+            <tr>
+              <td>Opponent 3:</td>
+              <td>{{ form.opponent3 }}</td>
+              <td>Opponent 3's total score for the round:</td>
+              <td>{{ form.o3totalscore }}</td>
+            </tr>
+          </table>
           {% if field.errors %}
             <span>{{ field.errors|striptags }}</span>
           {% endif %}
         {% endfor %}
-        
+
       <button type="submit" class="btn btn-warning">Save</button>
     </form>
     <div class="linkpadding">

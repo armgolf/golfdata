@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^approachtips/$', views.approachtips, name='approachtips'),
     url(r'^chippingtips/$', views.chippingtips, name='chippingtips'),
     url(r'^puttingtips/$', views.puttingtips, name='puttingtips'),
+    url(r'^leaguetable/$', views.leaguetable, name='leaguetable'),
 ]
