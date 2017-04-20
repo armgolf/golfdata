@@ -3,10 +3,10 @@
 
 {% block content %}
   <div class="pageheader">
-    <h1 class="sitetitle">GolfData - Leaguetable</h1>
+    <h1 class="sitetitle">Local Golf League - Leaguetable</h1>
     {% if user.is_authenticated %}
       <p class="hellouser">Hello {{ user.username }} <small>(<a class="text-muted" href="{% url 'logout' %}">Log out</a>)</small></p>
-      <p><a href ="{% url 'homepage' %}" class="hellouser">Homepage </a>｜
+      <p><a href ="{% url 'homepage' %}" class="hellouser">Homepage <span class="glyphicon glyphicon-home"></span></a>｜
       <a href="{% url 'golfscore_preentry' %}" class="hellouser">New Golf Round <span class="glyphicon glyphicon-plus"></span></a>｜
       <a href ="{% url 'display' %}" class="hellouser">Dashboard <span class="glyphicon glyphicon-dashboard"></span></a></p>
     {% else %}

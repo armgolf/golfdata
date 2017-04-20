@@ -2,7 +2,7 @@
 
 {% block content %}
   <div class="pageheader">
-    <h1 class="sitetitle">GolfData - Longiron Shot Tips</h1>
+    <h1 class="sitetitle">Local Golf League - Longiron Shot Tips</h1>
     {% if user.is_authenticated %}
       <p class="newround">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
       <p><a href ="{% url 'display' %}" class="hellouser">Dashboard </a>｜

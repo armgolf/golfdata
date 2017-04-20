@@ -29,8 +29,10 @@ def homepage(request):
     shotpercentages = ShotPercentages.objects.all()
     shotpercentages = shotpercentages.order_by('-pk')
     combolist = zip(totalscores, shotpercentages, golfscores)
+    leaguetable = Leaguetable.objects.all()
+    leaguetable = leaguetable.order_by('-points')
     return render(request, 'golfscores/homepage.html', {
-        'totalscores': totalscores, 'shotpercentages': shotpercentages, 'combolist': combolist, 'golfscores': golfscores
+        'totalscores': totalscores, 'shotpercentages': shotpercentages, 'combolist': combolist, 'golfscores': golfscores, 'leaguetable': leaguetable,
     })
 
 @login_required
