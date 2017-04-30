@@ -3,6 +3,7 @@ table, tr, td, th {
   margin-right: auto;
   padding: 0.5rem;
   text-align: center;
+  font-family: 'Architects Daughter', cursive;
 }
 
 .pageheader {
@@ -14,22 +15,22 @@ table, tr, td, th {
 
 .sitetitle {
   color: white;
-  font-family: 'Lobster', cursive;
+  font-family: 'Cherry Cream Soda', cursive;
 }
 
 .charttitle {
   color: black;
-  font-family: 'Lobster', cursive;
+  font-family: 'Cherry Cream Soda', cursive;
 }
 
 .subtitle {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Architects Daughter', cursive;
   text-align: center;
 }
 
 .hellouser {
   color: orange;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Architects Daughter', cursive;
 }
 
 .displaylist {
@@ -39,8 +40,15 @@ table, tr, td, th {
 
 .posttitle {
   color: green;
-  font-family: 'Lobster', cursive;
+  font-family: 'Cherry Cream Soda', cursive;
   text-align: center;
+}
+
+.posttitle2 {
+  color: green;
+  font-family: 'Cherry Cream Soda', cursive;
+  text-align: center;
+  font-size: 125%;
 }
 
 
@@ -73,19 +81,45 @@ p, a {
 
 .para {
   color: black;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Architects Daughter', cursive;
   text-align: center;
+  font-size: 125%;
+}
+
+ul {
+    list-style-position: inside;
+    text-align: left;
+}
+
+
+.para2 {
+  color: black;
+  font-family: 'Architects Daughter', cursive;
+  text-align: center;
+  font-size: 125%;
+}
+
+.para3 {
+  color: green;
+  font-family: 'Architects Daughter', cursive;
+  text-align: center;
+  font-size: 150%;
 }
 
 .para_link {
   color: white;
   background-color: green;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Architects Daughter', cursive;
   text-align: center;
 }
 
 .btn a:hover, .btn a:focus {
     color: red;
+    font-family: 'Architects Daughter', cursive;
+}
+
+.btn-block {
+    font-family: 'Architects Daughter', cursive;
 }
 
 .classybox {
@@ -95,4 +129,27 @@ p, a {
 
 .spacer {
     height: 20px;
+}
+
+.featurette-divider {
+  margin: 30px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+@media (min-width: 768px) {
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
 }

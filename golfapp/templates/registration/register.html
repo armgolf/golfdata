@@ -6,8 +6,8 @@
     {% endif %}
 
     <div class="pageheader">
-      <h1 class="sitetitle">GolfData - Registration</h1>
-      <p><a href="{% url 'homepage' %}">Homepage</a></p>
+      <h1 class="sitetitle">Local Golf League - Registration</h1>
+      <p><a href="{% url 'landingpage' %}">Landingpage</a></p>
     </div>
 
     <style>
@@ -24,5 +24,7 @@
         <input type="submit" value="register" />
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
+
+    <p class="para">Note: After successful registration you will be redirected to the landingpage, then please login.</p>
 
 {% endblock %}

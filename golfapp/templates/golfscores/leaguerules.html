@@ -1,0 +1,49 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+  <head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Play" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Audiowide" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cherry+Cream+Soda" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Local Golf League</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'css/golfapp.css' %}">
+  </head>
+
+<p align="center"><a class="hellouser" href="{% url 'leaguetable' %}">Back to Leaguetable</a></p>
+<h1 class="charttitle" align="center">Local Golf League - Guidelines & Format</h1>
+
+<div class="col-xs-12" style="height:25px;"></div>
+
+<p class="posttitle2">Playing Matches:</p>
+
+<p class="para">League matches can be played at any golfcourse,<br> as long as all players in a leaguematch are playing the same course at the same time.</p>
+<p class="para">Use <a class="para_link" href="http://www.teeofftimes.co.uk" target="_blank">teeofftimes</a> or similar to secure a good price for your round.</p>
+<p class="para">Once a league has started, a Whatsapp group will be set up to arrange matches.</p>
+<p class="para">(You can play up to 3 leaguematches at the same time when playing in a 4 ball).</p>
+
+
+<div class="col-xs-12" style="height:25px;"></div>
+<p class="posttitle2">Competition Format:</p>
+
+<p class="para">The first league matches will be played without handicaps - the player with the lowest total score wins.</p>
+<p class="para">2 points for a win, 1 point for a draw and 0 points for a loss.</p>
+<p class="para">All members of the league should play each other once within a set time period (e.g. 6 weeks for a league of 10 players).</p>
+<p class="para">The league will end when all matches have been played or the time limit has been exceeded.</p>
+
+<p class="para"></p>
+
+<div class="col-xs-12" style="height:25px;"></div>
+<p class="posttitle2">Inputting Data:</p>
+<p class="para">Record a leaguematch by selecting "New Golf Round+" and inputting your golfscore as normal.<br>Then add your opponent's userid and their totalscore to record the match.</p>
+<p class="para">If you play the same person more than once, only the first match should be recorded as a league match.</p>
+<div class="col-xs-12" style="height:25px;"></div>
+<p class="posttitle2">Prerequisites:</p>
+<p class="para">Handicaps or membership of a golfclub are not required.</p>
+<p class="para">Golfers of all standards are encouraged to join the league.</p>
+
+</html>

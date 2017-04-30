@@ -181,3 +181,7 @@ class Leaguetable(models.Model):
     drawn = models.IntegerField(default=0)
     points = models.IntegerField(default=0)
     played = models.IntegerField(default=0)
+
+class Signup(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    published_date = models.DateTimeField(default=timezone.now)

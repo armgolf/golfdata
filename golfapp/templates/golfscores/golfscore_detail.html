@@ -6,7 +6,7 @@
     <h1 class="sitetitle">Local Golf League - Detailed Round Data</h1>
     {% if user.is_authenticated %}
       <p class="hellouser">Hello {{ user.username }} <small>(<a class="text-muted" href="{% url 'logout' %}">Log out</a>)</small></p>
-      <p><a href ="{% url 'display' %}" class="hellouser">Dashboard </a>｜
+      <p><a href ="{% url 'display' %}" class="hellouser">Dashboard <span class="glyphicon glyphicon-dashboard"></span></a>｜
       <a href="{% url 'golfscore_edit' pk=golfscores.pk %}" class="hellouser">Edit this Golf Round <span class="glyphicon glyphicon-pencil"></span></a>｜
       <a class="hellouser" href="{% url 'golfscore_remove' pk=golfscores.pk %}">Delete this Golf Round<span class="glyphicon glyphicon-remove"></span></a></p>
     {% else %}

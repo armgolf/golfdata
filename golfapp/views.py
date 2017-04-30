@@ -1,12 +1,18 @@
 from django.shortcuts import render
 from django.http import Http404, JsonResponse
-from golfapp.models import Golfscore, ShotPercentages, TotalScores, GolfCourses, Leaguetable
+from golfapp.models import Golfscore, ShotPercentages, TotalScores, GolfCourses, Leaguetable, Signup
 from .forms import PostForm, gcselection
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from golfapp.templatetags.calcs import drive, longiron, approach, chip, putt
 from django.db.models import Avg
+
+def leaguerules(request):
+    return render(request, 'golfscores/leaguerules.html', {})
+
+def landingpage(request):
+    return render(request, 'golfscores/landingpage.html', {})
 
 @login_required
 def leaguetable(request):
@@ -17,8 +23,26 @@ def leaguetable(request):
     totalscores = TotalScores.objects.all()
     totalscores = totalscores.order_by('-pk')
     combolist = zip(totalscores, golfscore)
+    user = User.objects.all()
+    current_user = request.user
+    nextleague = Signup.objects.all()
+    signup = Signup.objects.filter(author=current_user)
+    if signup.exists():
+        signup = 1
+    else:
+        signup = 0
+    if request.method == "POST":
+        signedupuser = Signup.objects.create(author=current_user)
+        signup = Signup.objects.filter(author=current_user)
+        if signup.exists():
+            signup = 1
+        else:
+            signup = 0
+        return render(request, 'golfscores/leaguetable.html', {
+            'leaguetable': leaguetable, 'golfscore': golfscore, 'totalscores': totalscores,'combolist': combolist, 'signup': signup, 'nextleague': nextleague,
+        })
     return render(request, 'golfscores/leaguetable.html', {
-        'leaguetable': leaguetable, 'golfscore': golfscore, 'totalscores': totalscores,'combolist': combolist,
+        'leaguetable': leaguetable, 'golfscore': golfscore, 'totalscores': totalscores,'combolist': combolist, 'signup': signup, 'nextleague': nextleague,
     })
 
 def homepage(request):
@@ -49,8 +73,10 @@ def display(request):
     fill = TotalScores.objects.filter(author_id=request.user)
     handicap = fill.aggregate(Avg('overunderpar'))
     handicap = handicap['overunderpar__avg']
+    currentuser = request.user
+    noofscores= Golfscore.objects.filter(author=currentuser).count()
     return render(request, 'golfscores/display.html', {
-        'totalscores': totalscores, 'shotpercentages': shotpercentages, 'handicap': handicap, 'combolist': combolist, 'golfscores': golfscores
+        'totalscores': totalscores, 'shotpercentages': shotpercentages, 'handicap': handicap, 'combolist': combolist, 'golfscores': golfscores, 'noofscores': noofscores,
     })
 
 @login_required

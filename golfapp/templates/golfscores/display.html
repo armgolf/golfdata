@@ -14,6 +14,18 @@
       <a href="{% url 'register' %}" class="hellouser">Register <span class="glyphicon glyphicon-plus"></span></a>
     {% endif %}
   </div>
+  <div class="col-xs-12" style="height:15px;"></div>
+  <div>
+    {% if noofscores == 0 %}
+      <p class="posttitle2">Here is your dashboard!</p>
+      <p class="para2">Enter data for the golfrounds you play (individually and as leaguematches) and they will appear under "My lastest scores" below.</p>
+      <p class="para2">You can track your scores over time & % of good shots for each shot type with the blue buttons.</p>
+      <p class="para2">Your handicap is the average of the scores you enter.</p>
+      <p class="para2"><strong>Click on "New golf round+" to enter a new golfscore. </strong>｜<a href="{% url 'golfscore_preentry' %}" class="hellouser">New Golf Round <span class="glyphicon glyphicon-plus"></span></a></p>
+      <p class="para2"><strong>Click on "Homepage" to view the leaguetable and golfscores from all users.</strong>｜<a href ="{% url 'homepage' %}" class="hellouser">Homepage <span class="glyphicon glyphicon-home"></span></a></p>
+      <p class="para2"><strong>Or go to "Leaguetable" to find out how to enter the league...</strong>｜<a href ="{% url 'leaguetable' %}" class="hellouser">Leaguetable <span class="glyphicon glyphicon-list"></span></a></p>
+    {% endif %}
+  </div>
 
   <div class="col-xs-12" style="height:15px;"></div>
     <button type="button" class="btn btn-primary btn-lg btn-block"><a href="{% url 'plot2' %}">Scores Over Time</a></button>

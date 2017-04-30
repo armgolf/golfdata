@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/landingpage.css' %}">
+
+
+
+<body>
+
+  <div class="fullscreen-bg">
+      <video loop muted autoplay class="fullscreen-bg__video">
+          <source src="{% static 'images/VDs.mp4' %}" type="video/mp4" />
+      </video>
+  </div>
+
+
+
+  <div class="site-wrapper">
+
+
+
+    <div class="site-wrapper-inner">
+
+
+
+      <div class="cover-container">
+
+
+        <h1 class="masthead">Local Golf League</h1>
+
+
+        <div class="inner cover">
+          <h1 class="cover-heading">A fresh amature golf league in Coventry & Warwickshire.</h1>
+          <p class="lead">Meet new golfers and play a range of local courses.</p>
+          <p class="lead">Register to join the first league (for free)!</p>
+        </div>
+
+        <div>
+          {% if user.is_authenticated %}
+            <p class="hellouser">Hello {{ user.username }} <small>(<a class="text-muted" href="{% url 'logout' %}">Log out</a>)</small></p>
+            <p><a href ="{% url 'display' %}" class="hellouser">Dashboard <span class="glyphicon glyphicon-dashboard"></span></a>｜
+            <a href="{% url 'golfscore_preentry' %}" class="hellouser">New Golf Round <span class="glyphicon glyphicon-plus"></span></a>｜
+            <a href ="{% url 'leaguetable' %}" class="hellouser">Leaguetable <span class="glyphicon glyphicon-list"></span></a></p>
+
+          {% else %}
+            <p class="lead">
+              <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Login <span class="glyphicon glyphicon-lock"></span></a>
+              <a href="{% url 'register' %}" class="btn btn-warning btn-lg">Register <span class="glyphicon glyphicon-plus"></span></a>
+            </p>
+          {% endif %}
+        </div>
+
+        <div class="mastfoot">
+          <div class="inner">
+            <p>© Local Golf League in Coventry & Warwickshire. est. 2017</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+{% endblock %}
