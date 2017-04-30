@@ -210,3 +210,7 @@ font-family: 'Cherry Cream Soda', cursive;
     width: 700px;
   }
 }
+
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
