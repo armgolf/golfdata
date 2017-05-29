@@ -1,3 +1,41 @@
+import os
+import sys
+
+path = '/home/Golfdata/golfdata'
+if path not in sys.path:
+    sys.path.append(path)
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'golfdata.settings'
+
+from django.core.wsgi import get_wsgi_application
+from django.contrib.staticfiles.handlers import StaticFilesHandler
+application = StaticFilesHandler(get_wsgi_application())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div>
   <p class="para">A "good" shot is one that achieves the intended outcome before hitting the shot and a "bad" shot is everything else.</p>
   <p class="para">Example "good" shot definitions:</p>

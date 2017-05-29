@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm, NumberInput, ModelChoiceField, RadioSelect
-from .models import Golfscore, GolfCourses
+from .models import Golfscore, GolfCourses, Signup
 from django.utils.safestring import mark_safe
 
 class HorizontalRadioRenderer(forms.RadioSelect.renderer):
@@ -147,3 +147,9 @@ class PostForm(forms.ModelForm):
 
 class gcselection(forms.Form):
     field1 = ModelChoiceField(queryset=GolfCourses.objects.all(), to_field_name="course", label='Which course did you play?', empty_label="select golf course")
+
+class PNumber(forms.ModelForm):
+
+    class Meta:
+        model = Signup
+        fields = ('phonenumber',)

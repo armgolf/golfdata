@@ -185,3 +185,4 @@ class Leaguetable(models.Model):
 class Signup(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     published_date = models.DateTimeField(default=timezone.now)
+    phonenumber = models.CharField(max_length=20)

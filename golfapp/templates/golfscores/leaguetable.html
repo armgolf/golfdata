@@ -60,11 +60,12 @@
 
 {% if signup == 1 %}
   <p class="posttitle2">Thanks for signing up!</p>
-  <p class="posttitle2">Please text your username & phone number to 07816204182 and you will be added to a Whatsapp group for the league.</p>
 {% else %}
+  <p class="posttitle2">Please enter your phone number to the form below and you will be added to a Whatsapp group for the league.</p>
   <form method="POST" class="">
       {% csrf_token %}
-      <button type="submit" class="save btn btn-danger">Enter League</button>
+      <table>{{ form.as_table }}</table>
+      <button type="submit" class="save btn btn-warning">Enter League</button>
   </form>
 {% endif %}
 

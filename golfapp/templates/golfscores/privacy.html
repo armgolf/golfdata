@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="pageheader">
+    <h1 class="sitetitle">Local Golf League - Privacy Policy</h1>
+    {% if user.is_authenticated %}
+      <p class="hellouser">Hello {{ user.username }} <small>(<a class="text-muted" href="{% url 'logout' %}">Log out</a>)</small></p>
+      <p><a href ="{% url 'homepage' %}" class="hellouser">Homepage <span class="glyphicon glyphicon-home"></span></a>｜
+      <a href ="{% url 'display' %}" class="hellouser">Dashboard <span class="glyphicon glyphicon-dashboard"></span></a>｜
+      <a href="{% url 'golfscore_preentry' %}" class="hellouser">New Golf Round <span class="glyphicon glyphicon-plus"></span></a>｜
+      <a href ="{% url 'leaguetable' %}" class="hellouser">Leaguetable <span class="glyphicon glyphicon-list"></span></a></p>
+    {% else %}
+      <p><a href="{% url 'login' %}" class="hellouser">Login <span class="glyphicon glyphicon-lock"></span></a>
+      <a href="{% url 'register' %}" class="hellouser">Register <span class="glyphicon glyphicon-plus"></span></a>｜
+      <a href="{% url 'landingpage' %}" class="hellouser">Landingpage</a></p>
+    {% endif %}
+  </div>
+  <div class="col-xs-12" style="height:15px;"></div>
+  <div>
+
+  <p class="para"><i>Date of policy: 30/05/2017</i></p>
+
+  <h1 class="subtitle">Information Collection and Use</h1>
+
+  <p class="posttitle2">Registration</p>
+
+  <p class="para">A username and password is requested to use the website.<br>
+    The username and password are used to identify the user.</p>
+
+  <p class="posttitle2">Golf League Signup</p>
+
+  <p class="para">The user's phonenumber is requested when signing up to participate in a golf league.<br>
+    The phonenumber is used to set up a Whatsapp group for the league which is used to schedule league matches.</p>
+
+  <p class="posttitle2">Golf Activity Data</p>
+
+  <p class="para">The following data can be entered by the user when recording golf data:<br>
+    Course played, score per hole, a "good", "bad" or "N/a" rating for each shot type per hole, opponent played and the date the data is entered to the website on.<br>
+    The golf activity data is used to operate the golf league and provide a golf data management service for the user.</p>
+
+  <h1 class="subtitle">Information Sharing and Disclosure</h1>
+
+  <p class="para">Local Golf League does not share data in the "Information Collection and Use" section above with 3rd parties.<br>
+
+  We reserve the right to disclose your personally identifiable information as required by law or when we believe that disclosure is necessary to protect person,<br>
+  property, our rights and/or to comply with a judicial proceeding, court order, or legal process served on the Web Site and/or as permitted by applicable laws.</p>
+
+  <h1 class="subtitle">Material Changes since Effective Date</h1>
+
+  <p class="para">None.</p>
+
+  <p class="para">(Any changes to the privacy policy will be recorded here).</p>
+
+  <h1 class="subtitle">Contact Us</h1>
+
+  <p class="para">You can let us know at any time if you would like your personally identifiable information to be deleted, by sending an email to armitchell@hotmail.co.uk</p>
+
+{% endblock %}

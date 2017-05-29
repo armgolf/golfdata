@@ -34,4 +34,5 @@ urlpatterns = [
     url(r'^leaguetable/$', views.leaguetable, name='leaguetable'),
     url(r'^homepage/$', views.homepage, name='homepage'),
     url(r'^leaguerules/$', views.leaguerules, name='leaguerules'),
+    url(r'^privacy/$', views.privacy, name='privacy'),
 ]
