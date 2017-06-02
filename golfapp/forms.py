@@ -146,7 +146,7 @@ class PostForm(forms.ModelForm):
         }
 
 class gcselection(forms.Form):
-    field1 = ModelChoiceField(queryset=GolfCourses.objects.all(), to_field_name="course", label='Which course did you play?', empty_label="select golf course")
+    field1 = ModelChoiceField(queryset=GolfCourses.objects.order_by('course'), to_field_name="course", label='Which course did you play?', empty_label="select golf course")
 
 class PNumber(forms.ModelForm):
 
