@@ -25,7 +25,7 @@ SECRET_KEY = '9@7u+9(#(=#!clj%=!zjpcd_6cn7wz16#v@$$_@sry@8_d&whk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'www.localgolfleague.co.uk']
 
 
 # Application definition
