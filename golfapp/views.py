@@ -77,7 +77,7 @@ def display(request):
     shotpercentages = shotpercentages.order_by('-pk')
     combolist = zip(totalscores, shotpercentages, golfscores)
     current_user = request.user
-    fill = TotalScores.objects.filter(author_id=request.user)
+    fill = TotalScores.objects.filter(author_id=request.user).order_by('-pk')[:5]
     handicap = fill.aggregate(Avg('overunderpar'))
     handicap = handicap['overunderpar__avg']
     currentuser = request.user
