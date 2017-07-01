@@ -20,7 +20,7 @@ def landingpage(request):
 @login_required
 def leaguetable(request):
     leaguetable = Leaguetable.objects.all()
-    leaguetable = leaguetable.order_by('-points')
+    leaguetable = leaguetable.order_by('-points', '-played')
     golfscore = Golfscore.objects.all()
     golfscore = golfscore.order_by('-pk')
     totalscores = TotalScores.objects.all()
@@ -61,7 +61,7 @@ def homepage(request):
     shotpercentages = shotpercentages.order_by('-pk')
     combolist = zip(totalscores, shotpercentages, golfscores)
     leaguetable = Leaguetable.objects.all()
-    leaguetable = leaguetable.order_by('-points')
+    leaguetable = leaguetable.order_by('-points', '-played')
     return render(request, 'golfscores/homepage.html', {
         'totalscores': totalscores, 'shotpercentages': shotpercentages, 'combolist': combolist, 'golfscores': golfscores, 'leaguetable': leaguetable,
     })
@@ -318,7 +318,7 @@ def golfscore_remove(request, pk):
 
 def plot(request, chartID = 'chart_ID', chart_type = 'column', chart_height = 500):
     current_user = request.user
-    fill = ShotPercentages.objects.filter(author_id=request.user)
+    fill = ShotPercentages.objects.filter(author_id=request.user).order_by('-pk')[:5]
     DR = fill.aggregate(Avg('drivepercentage'))
     DR = DR['drivepercentage__avg']
     LI = fill.aggregate(Avg('longironpercentage'))
@@ -331,10 +331,10 @@ def plot(request, chartID = 'chart_ID', chart_type = 'column', chart_height = 50
     PU = PU['puttpercentage__avg']
 
     chart = {"renderTo": chartID, "type": chart_type, "height": chart_height,}
-    title = {"text": 'Good Shot Percentages'}
+    title = {"text": 'Good Shot Percentages: Average for last 5 rounds'}
     xAxis = {"title": {"text": 'Shot Type'}, "categories": ['Drive', 'Longiron', 'Approach', 'Chip', 'Putt']}
     yAxis = {"title": {"text": 'Percentages (%)'}}
-    series = [{"name": 'Average Good Shot Percentage', "data": [DR, LI, AP, CH, PU]}]
+    series = [{"name": 'Average Good Shot Percentage', "colorByPoint": 'true', "data": [DR, LI, AP, CH, PU]}]
 
     return render(request, 'golfscores/Chart.html', {'chartID': chartID, 'chart': chart,
                                                     'series': series, 'title': title,
@@ -354,7 +354,7 @@ def plot2(request, chartID = 'chart_ID', chart_type = 'line', chart_height = 500
                                                 'series': series, 'title': title,
                                                 'xAxis': xAxis, 'yAxis': yAxis, 'current_user': current_user, 'OUP': OUP})
 
-def plot3(request, chartID = 'chart_ID', chartID2 = 'chart_ID2', chart_type = 'column', chart_type2 = 'line', chart_height = 500):
+def plot3(request, chartID = 'chart_ID', chartID2 = 'chart_ID2', chartID3 = 'chart_ID3', chart_type = 'column', chart_type2 = 'line', chart_type3 = 'column', chart_height = 500):
     current_user = request.user
     fill = ShotPercentages.objects.filter(author_id=request.user)
     DR = fill.aggregate(Avg('drivepercentage'))
@@ -369,19 +369,37 @@ def plot3(request, chartID = 'chart_ID', chartID2 = 'chart_ID2', chart_type = 'c
     PU = PU['puttpercentage__avg']
 
     chart = {"renderTo": chartID, "type": chart_type, "height": chart_height,}
-    title = {"text": 'Good Shot Percentages'}
+    title = {"text": 'Good Shot Percentages: All Time'}
     xAxis = {"title": {"text": 'Shot Type'}, "categories": ['Drive', 'Longiron', 'Approach', 'Chip', 'Putt']}
     yAxis = {"title": {"text": 'Percentages (%)'}}
-    series = [{"name": 'Average Good Shot Percentage', "data": [DR, LI, AP, CH, PU]}]
+    series = [{"name": 'Average Good Shot Percentage', "colorByPoint": 'true', "data": [DR, LI, AP, CH, PU]}]
 
     fill = TotalScores.objects.filter(author_id=request.user)
     OUP = list(fill.values_list('overunderpar', flat=True))
 
     chart2 = {"renderTo": chartID2, "type": chart_type2, "height": chart_height,}
-    title2 = {"text": 'Good Shot Percentages'}
+    title2 = {"text": 'Scores Over Time'}
     xAxis2 = {"title": {"text": 'Golfrounds'}, "categories": []}
     yAxis2 = {"title": {"text": 'Shots over par'}}
     series2 = [{"name": 'Scores', "data": OUP}]
+
+    fill = ShotPercentages.objects.filter(author_id=request.user).order_by('-pk')[:3]
+    DR3 = fill.aggregate(Avg('drivepercentage'))
+    DR3 = DR3['drivepercentage__avg']
+    LI3 = fill.aggregate(Avg('longironpercentage'))
+    LI3 = LI3['longironpercentage__avg']
+    AP3 = fill.aggregate(Avg('approachpercentage'))
+    AP3 = AP3['approachpercentage__avg']
+    CH3 = fill.aggregate(Avg('chippercentage'))
+    CH3 = CH3['chippercentage__avg']
+    PU3 = fill.aggregate(Avg('puttpercentage'))
+    PU3 = PU3['puttpercentage__avg']
+
+    chart3 = {"renderTo": chartID3, "type": chart_type3, "height": chart_height,}
+    title3 = {"text": 'Good Shot Percentages: Last 3 Rounds'}
+    xAxis3 = {"title": {"text": 'Shot Type'}, "categories": ['Drive', 'Longiron', 'Approach', 'Chip', 'Putt']}
+    yAxis3 = {"title": {"text": 'Percentages (%)'}}
+    series3 = [{"name": 'Average Good Shot Percentage', "colorByPoint": 'true', "data": [DR3, LI3, AP3, CH3, PU3]}]
 
 
     return render(request, 'golfscores/Chart3.html', {'chartID': chartID, 'chart': chart,
@@ -389,7 +407,10 @@ def plot3(request, chartID = 'chart_ID', chartID2 = 'chart_ID2', chart_type = 'c
                                                     'xAxis': xAxis, 'yAxis': yAxis, 'current_user': current_user,
                                                     'chartID2': chartID2, 'chart2': chart2,
                                                     'series2': series2, 'title2': title2,
-                                                    'xAxis2': xAxis2, 'yAxis2': yAxis2,})
+                                                    'xAxis2': xAxis2, 'yAxis2': yAxis2,
+                                                    'chartID3': chartID3, 'chart3': chart3,
+                                                    'series3': series3, 'title3': title3,
+                                                    'xAxis3': xAxis3, 'yAxis3': yAxis3,})
 
 def drivingtips(request):
     return render(request, 'golfscores/drivingtips.html', {})
